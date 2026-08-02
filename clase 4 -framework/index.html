@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wallet - Login</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body {
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+ 
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" 
+        placeholder="Enter email">
+      </div>
+     
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" 
+        placeholder="Enter password">
+      </div>
+     
+      <button class="btn btn-primary"onclick="validar ()"; >Login</button>
+   
+
+<script>
+  localStorage.setItem("balance", 0);
+  
+  function validar() {
+    
+
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    if (email === "admin@admin.cl" && password === "123") {
+      alert ("Datos correctos");
+      window.location.href = "./menu.html";
+  } else {
+      alert("Datos incorrectos");
+    }
+  }
+</script>
+</body>
+</html>

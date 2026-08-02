@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wallet - Menú Principal</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body { padding: 20px; background-color: #f8f9fa; }
+    .container { max-width: 400px; margin: 40px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="mb-4">Menú Principal</h2>
+
+    <div class="form-group alert alert-info">
+      <label for="balance" class="mb-0"><strong>Dinero en cuenta:</strong></label>
+      <h3 class="mb-0">$<span id="balance">0</span></h3>
+    </div>
+   
+    <button class="btn btn-primary btn-block mb-2" onclick="cargaDepositar()">Depositar</button>
+    <button class="btn btn-primary btn-block mb-2" onclick="cargaEnviarDinero()">Enviar Dinero</button>
+    <button class="btn btn-primary btn-block mb-3" onclick="cargaUltimosMovimientos()">Últimos Movimientos</button>
+
+    <p id="resultado" class="text-muted text-center"></p>
+  </div>
+  
+  <script>
+    // Carga del saldo actual guardado
+    let saldoActual = localStorage.getItem("balance") || "0";
+    document.getElementById("balance").textContent = Number(saldoActual).toLocaleString();
+
+    function cargaDepositar() {
+      document.getElementById("resultado").textContent = "Redirigiendo a depositar...";
+      window.location.href = "./deposit.html";
+    }
+
+    function cargaEnviarDinero() {
+      document.getElementById("resultado").textContent = "Redirigiendo a enviar dinero...";
+      window.location.href = "./sendmoney.html";
+    }
+
+    function cargaUltimosMovimientos() {
+      document.getElementById("resultado").textContent = "Redirigiendo a últimos movimientos...";
+      window.location.href = "./transactions.html";
+    }
+  </script>
+</body>
+</html>

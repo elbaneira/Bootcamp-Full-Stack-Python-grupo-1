@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Portafolio</title>
+  <link rel="stylesheet" href="styles.css">
+ <style>
+ /* 1. CONFIGURACIÓN GENERAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Evita que los paddings alteren el tamaño de las cajas */
+}
+
+body {
+  font-family: 'Segoe UI', Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #0f172a; /* Fondo oscuro moderno (Slate 900) */
+  color: #e2e8f0;            /* Texto claro muy legible */
+  line-height: 1.6;
+}
+
+/* 2. ENCABEZADO (HEADER) */
+header {
+  background-color: #1e293b; /* Gris oscuro con contraste */
+  padding: 30px 20px;
+  text-align: center;
+  border-bottom: 3px solid #2563eb; /* Línea azul elegante estilo Power BI */
+}
+
+header h1 {
+  font-size: 2.2rem;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+/* 3. MENÚ DE NAVEGACIÓN (NAV) */
+nav {
+  background-color: #1e293b;
+  padding: 15px 0;
+  position: sticky; /* Se queda fijo arriba al bajar por la página */
+  top: 0;
+  z-index: 100;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Separación entre botones */
+}
+
+nav a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #3b82f6; /* El enlace se ilumina en azul al pasar el mouse */
+}
+
+/* 4. CONTENEDOR PRINCIPAL Y SECCIONES */
+main {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+section {
+  background-color: #1e293b;
+  padding: 30px;
+  margin-bottom: 40px;
+  border-radius: 12px; /* Bordes suavemente redondeados */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+}
+
+section h2 {
+  color: #3b82f6; /* Títulos de sección en azul vibrante */
+  margin-bottom: 20px;
+  font-size: 1.7rem;
+  border-left: 4px solid #2563eb;
+  padding-left: 10px;
+}
+
+/* 5. SECCIÓN PROYECTOS (ESTILO REJILLA/GRID) */
+#projects {
+  background-color: transparent; /* Quitamos el fondo para que las tarjetas resalten sueltas */
+  padding: 0;
+  box-shadow: none;
+}
+
+/* Contenedor flexible para alinear las tarjetas de proyectos lado a lado */
+#projects .project-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+/* Estilo individual de cada tarjeta de proyecto */
+.project {
+  background-color: #1e293b;
+  border-radius: 12px;
+  overflow: hidden; /* Evita que la imagen se salga de los bordes redondeados */
+  flex: 1;
+  min-width: 300px;
+  max-width: 48%; /* Dos proyectos por fila en pantallas grandes */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.project:hover {
+  transform: translateY(-5px); /* Efecto flotante al pasar el mouse */
+}
+
+.project img {
+  border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.project h3 {
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.project p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+/* El botón "Ver Proyecto" */
+.project a {
+  display: inline-block;
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Botón a lo ancho de la tarjeta */
+}
+
+.project a:hover {
+  background-color: #1d4ed8; /* Azul más oscuro al presionar */
+}
+
+/* 6. SECCIÓN HABILIDADES (LISTA DISEÑADA) */
+#skills ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+#skills li {
+  background-color: #334155;
+  color: #3b82f6;
+  padding: 8px 16px;
+  border-radius: 20px; /* Estilo píldora/etiqueta */
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid #475569;
+}
+
+/* 7. PIE DE PÁGINA (FOOTER) */
+footer {
+  text-align: center;
+  padding: 25px;
+  background-color: #0f172a;
+  color: #64748b;
+  font-size: 0.9rem;
+  border-top: 1px solid #1e293b;
+}
+ .project {
+  margin-bottom: 50px; 
+}
+  
+   </style>
+</head>
+<body>
+  <header>
+    <h1>Mi Portafolio Personal</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#projects">Proyectos</a></li> <li><a href="#skills">Habilidades</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>Sobre mí</h2>
+      <p>Hola, soy Elba Neira. El mundo del análisis de datos es mi pasión, junto con la visualización, marketing digital, ciberseguridad,
+         tengo experiencia en Power Query, Power Bi, SEO. Me encanta crear y automatizar soluciones ocupando herramientas digitales
+         y funcionales para mis clientes y usuarios.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Proyectos</h2>
+      
+      <div class="project-container">
+      
+        <div class="project">
+          <img src="./img/proyecto 1.png" alt="Proyecto 1" width="300" height="250">
+          <h3>Proyecto 1</h3>
+          <p>Descripción del proyecto 1.</p>
+          <a href="https://youtu.be/Q9QxNap9yDg" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+        </div>
+    
+        <div class="project"> 
+          <img src="./img/proyecto 2.png" alt="Proyecto 2" width="300" height="250">
+          <h3>Proyecto 2</h3>
+          <p>Descripción del proyecto 2.</p>
+          <a href="https://youtu.be/qqrnXMBsQwU" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+        </div>
+
+      </div> 
+    </section>
+    
+
+    <section id="skills">
+      <h2>Habilidades</h2>
+      <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li> 
+        <li>Responsive Web Design</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Elba Neira</p>
+  </footer>
+</body>
+</html>
+

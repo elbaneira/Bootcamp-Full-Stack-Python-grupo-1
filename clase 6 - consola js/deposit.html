@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wallet - Depositar</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body { padding: 20px; background-color: #f8f9fa; }
+    .container { max-width: 400px; margin: 40px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Depositar</h2>
+    <form id="depositForm">
+      <div class="form-group mt-3">
+        <label for="depositAmount">Monto a depositar:</label>
+        <input type="number" class="form-control" id="depositAmount" placeholder="Ingrese el monto" min="1" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Realizar depósito</button>
+    </form>
+    <a href="menu.html" class="btn btn-secondary btn-block mt-2">Volver al Menú Principal</a>
+  </div>
+
+  <script>
+    document.getElementById("depositForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let monto = parseFloat(document.getElementById("depositAmount").value);
+      let saldoActual = parseFloat(localStorage.getItem("balance") || "60000");
+
+      if (monto > 0) {
+        let nuevoSaldo = saldoActual + monto;
+        localStorage.setItem("balance", nuevoSaldo.toString());
+
+        // Guardar la operación en el historial
+        let movimientos = JSON.parse(localStorage.getItem("movimientos") || "[]");
+        movimientos.unshift({ tipo: "Depósito realizado", monto: monto });
+        localStorage.setItem("movimientos", JSON.stringify(movimientos));
+
+        alert(`¡Depósito realizado! Nuevo saldo: $${nuevoSaldo.toLocaleString()}`);
+        window.location.href = "./menu.html";
+      }
+    });
+  </script>
+</body>
+</html>

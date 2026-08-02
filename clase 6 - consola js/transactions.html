@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wallet - Últimos Movimientos</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body { padding: 20px; background-color: #f8f9fa; }
+    .container { max-width: 450px; margin: 40px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="mb-4">Últimos Movimientos</h2>
+    
+    <ul id="listaMovimientos" class="list-group mb-3">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Compra en línea
+        <span class="badge badge-danger badge-pill">-$50000</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Transferencia recibida
+        <span class="badge badge-success badge-pill">+$7500</span>
+      </li>
+    </ul>
+
+    <a href="menu.html" class="btn btn-secondary btn-block">Volver al Menú Principal</a>
+  </div>
+
+  <script>
+    // Leer movimientos guardados en la memoria
+    let movimientos = JSON.parse(localStorage.getItem("movimientos") || "[]");
+    let listaHTML = document.getElementById("listaMovimientos");
+
+    movimientos.forEach(mov => {
+      let li = document.createElement("li");
+      li.className = "list-group-item d-flex justify-content-between align-items-center";
+      let esPositivo = mov.monto > 0;
+      let badge = esPositivo ? "badge-success" : "badge-danger";
+      let signo = esPositivo ? "+" : "";
+
+      li.innerHTML = `
+        ${mov.tipo}
+        <span class="badge ${badge} badge-pill">${signo}$${Math.abs(mov.monto).toLocaleString()}</span>
+      `;
+      listaHTML.insertBefore(li, listaHTML.firstChild);
+    });
+  </script>
+</body>
+</html>

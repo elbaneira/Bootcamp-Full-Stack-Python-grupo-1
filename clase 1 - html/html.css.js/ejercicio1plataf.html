@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Películas de Marvel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        h1 {
+            color: #0b3c5d;
+        }
+
+        /* Contenedor de la lista */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Estilo para cada elemento interactivo de la lista */
+        .categoria-disney {
+            position: relative;
+            display: inline-block;
+            margin-right: 20px;
+            cursor: pointer;
+            color: #0073e6;
+            font-weight: bold;
+            font-size: 18px;
+            text-decoration: underline;
+            padding: 5px 10px;
+        }
+
+        /* Ventana flotante oculta por defecto */
+        .contenido-flotante {
+            display: none; /* Oculta el contenido */
+            position: absolute;
+            top: 100%; /* Aparece justo debajo del texto */
+            left: 0;
+            background-color: white;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 8px;
+            z-index: 1;
+            width: 320px;
+            color: #333;
+            font-weight: normal;
+            border: 1px solid #ddd;
+        }
+
+        /* Títulos dentro de la ventana flotante */
+        .contenido-flotante h3 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            color: #111;
+        }
+
+        /* Descripciones */
+        .contenido-flotante p {
+            margin: 0 0 15px 0;
+            font-size: 13px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* EL TRUCO: Al pasar el cursor (:hover), muestra la ventana flotante */
+        .categoria-disney:hover .contenido-flotante {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Películas de Disney</h1>
+    <p>Pasa el cursor sobre cada categoría para ver las películas y sus detalles:</p>
+
+    <ul>
+        <li class="categoria-disney">
+            Colección Avatar
+            <div class="1 pelicula">
+                <h3>Avatar (2009)</h3>
+                <p>Dirigida por James Cameron, protagonizada por Sam Worthington y Zoe Saldaña.</p>
+                
+                <h3>Avatar: The Way of Water (2022)</h3>
+                <p>Dirigida por James Cameron, protagonizada por Sam Worthington y Kate Winslet.</p>
+            </div>
+        </li>
+
+        <li class="categoria-disney">
+            Pixar / Coco
+            <div class="contenido-flotante">
+                <h3>Coco (2017)</h3>
+                <p>Dirigida por Lee Unkrich, con las voces de Anthony Gonzalez y Gael García Bernal.</p>
+            </div>
+        </li>
+
+        <li class="categoria-disney">
+            Live-Action / Maléfica
+            <div class="contenido-flotante">
+                <h3>Maléfica (2014)</h3>
+                <p>Dirigida por Robert Stromberg, protagonizada por Angelina Jolie y Elle Fanning.</p>
+                
+                <h3>Maléfica: Mistress of Evil (2019)</h3>
+                <p>Dirigida por Joachim Rønning, protagonizada por Angelina Jolie.</p>
+            </div>
+        </li>
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wallet - Login</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body { padding: 20px; background-color: #f8f9fa; }
+    .container { max-width: 400px; margin: 40px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center mb-4">Login</h2>
+    
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Ingrese email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" placeholder="Ingrese contraseña" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+    </form>
+    </div>
+
+  <script>
+    // Inicializar saldo base de $60.000 si no existe
+    if (!localStorage.getItem("balance")) {
+      localStorage.setItem("balance", "60000");
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+
+      if (email === "admin@admin.cl" && password === "123") {
+        alert("¡Inicio de sesión exitoso!");
+        window.location.href = "./menu.html";
+      } else {
+        alert("Error: Credenciales incorrectas.");
+      }
+    });
+  </script>
+</body>
+</html>

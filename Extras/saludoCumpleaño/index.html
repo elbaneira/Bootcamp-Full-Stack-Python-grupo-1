@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Misión Secreta de Cumpleaños! 🚀</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #2b1055, #7597de);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 30px 25px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      border: 4px solid #ffde59;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .badge {
+      background: #ff3366;
+      color: white;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 50px;
+      display: inline-block;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      animation: pulse 1.5s infinite;
+    }
+
+    h1 {
+      color: #2b1055;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .btn-main {
+      background: #ffde59;
+      color: #2b1055;
+      border: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 16px 24px;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 8px 15px rgba(255, 222, 89, 0.4);
+      transition: transform 0.2s, background 0.2s;
+      width: 100%;
+    }
+
+    .btn-main:hover {
+      transform: scale(1.05);
+      background: #ffd000;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .mission-content {
+      margin-top: 25px;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .requirements {
+      background: #f0f4ff;
+      border-left: 5px solid #3b82f6;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: left;
+      margin: 20px 0;
+      font-size: 1rem;
+      color: #1e293b;
+    }
+
+    .requirements li {
+      list-style: none;
+      margin: 8px 0;
+    }
+
+    .message {
+      font-size: 1.1rem;
+      color: #334155;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .hug-box {
+      background: #fff0f5;
+      border: 2px dashed #ff69b4;
+      border-radius: 16px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    .btn-hug {
+      background: #ff69b4;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+
+    .signature {
+      margin-top: 25px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #2b1055;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="badge">🚨 TOP SECRET 🚨</div>
+    <h1>¡MISIÓN ESPECIAL!</h1>
+    <p style="color: #64748b;">Mensaje encriptado para la cumpleañera</p>
+
+    <button id="start-btn" class="btn-main" onclick="revelarMision()">
+      🔓 TOCAR AQUÍ PARA DESBLOQUEAR
+    </button>
+
+    <div id="mission-body" class="mission-content hidden">
+      <div class="requirements">
+        <strong>📋 REQUISITOS OBLIGATORIOS:</strong>
+        <ul>
+          <li>✅ Cumplir 7 años hoy.</li>
+          <li>✅ Tener una sonrisa gigante.</li>
+          <li>✅ Comer mucho pastel y jugar sin parar.</li>
+        </ul>
+      </div>
+
+      <p class="message">
+        ¡Felicidades! Aunque nos separen muchos kilómetros, mi superpoder de tía hace que mi corazón esté celebrando a tu lado hoy.
+      </p>
+
+      <div class="hug-box">
+        <p><strong>Misión secundaria:</strong> Junta tus 6 abrazos mágicos</p>
+        <button class="btn-hug" onclick="darAbrazo()">🤗 Recibir abrazo (<span id="count">0</span>/6)</button>
+        <p id="hug-msg" style="margin-top: 8px; font-weight: bold; color: #ff1493;"></p>
+      </div>
+
+      <div class="signature">
+        — Con todo mi amor, la Tía Elba ✨❤️
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let abrazos = 0;
+
+    function revelarMision() {
+      // Ocultar botón inicial y mostrar contenido
+      document.getElementById('start-btn').classList.add('hidden');
+      document.getElementById('mission-body').classList.remove('hidden');
+
+      // Disparar confeti de fiesta
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+
+    function darAbrazo() {
+      if (abrazos < 6) {
+        abrazos++;
+        document.getElementById('count').innerText = abrazos;
+        
+        // Pequeña explosión de confeti por cada abrazo
+        confetti({
+          particleCount: 30,
+          spread: 50,
+          origin: { y: 0.7 }
+        });
+
+        if (abrazos === 6) {
+          document.getElementById('hug-msg').innerText = "🎉 ¡Misión completada! ¡6 abrazos gigantes volando hacia ti!";
+        } else {
+          document.getElementById('hug-msg').innerText = `¡Abrazo #${abrazos} enviado con superpoderes! 🚀`;
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
