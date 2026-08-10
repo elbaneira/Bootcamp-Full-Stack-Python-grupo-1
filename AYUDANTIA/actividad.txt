@@ -18,3 +18,15 @@
 [2026-08-09 19:30:13] Guardado en CSV
 [2026-08-10 09:01:38] Guardado en JSON
 [2026-08-10 09:01:38] Guardado en CSV
+[2026-08-10 09:30:55] Guardado en JSON
+[2026-08-10 09:30:55] Guardado en CSV
+[2026-08-10 09:31:43] Guardado en JSON
+[2026-08-10 09:31:43] Guardado en CSV
+[2026-08-10 10:43:30] Guardado en JSON
+[2026-08-10 10:43:30] Guardado en CSV
+[2026-08-10 10:45:07] Guardado en JSON
+[2026-08-10 10:45:07] Guardado en CSV
+[2026-08-10 10:46:26] Guardado en JSON
+[2026-08-10 10:46:26] Guardado en CSV
+[2026-08-10 11:11:26] Guardado en JSON
+[2026-08-10 11:11:26] Guardado en CSV
