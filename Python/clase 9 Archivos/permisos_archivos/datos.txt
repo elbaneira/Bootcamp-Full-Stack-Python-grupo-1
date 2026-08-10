@@ -1,0 +1,4 @@
+Línea 1: Bienvenidos al manejo de archivos en Python.
+Línea 2: Estamos aprendiendo a programar en el Bootcamp.
+Línea 3: Este archivo fue creado automáticamente.
+Línea 4: Esta línea fue agregada usando el modo append.

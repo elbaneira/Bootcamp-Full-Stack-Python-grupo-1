@@ -1,0 +1,10 @@
+Línea 01: Registro de control de la clínica médica. 
+Línea 02: Paciente ingresado en el sistema de salud. 
+Línea 03: Francisca Belén Bustos Quezada - ID 4029. 
+Línea 04: Hora programada de atención médica: 19:00 hrs.
+Línea 05: Estado de la consulta actual: Pendiente. 
+Línea 06: Historial clínico cargado correctamente.
+Línea 07: Especialidad asignada: Medicina General.
+Línea 08: Box de atención número cuatro seleccionado.
+Línea 09: Alerta de seguimiento activada en el sistema.
+Línea 10: Fin del reporte y cierre de la sesión actual.

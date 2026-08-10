@@ -1,0 +1,15 @@
+archivo = open("prueba.txt", "r", encoding="utf-8")
+contenido = archivo.read()
+identificador = archivo.fileno()
+print(f"El identificador es: {identificador}")
+print()
+
+print("Contenido completo del archivo:")
+print(contenido)
+print()
+
+print("Nombre:", archivo.name)
+print("Modo:", archivo.mode)
+print(f"¿Está cerrado el archivo ahora? {archivo.closed}")
+archivo.close()
+print(f"¿Está cerrado después de archivo.close()?: {archivo.closed}")

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Felicidades Susana! New <Baby> Detected 👶💻</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #1e1e1e; /* Fondo estilo VS Code */
+      background-image: 
+        radial-gradient(#333 1px, transparent 1px),
+        radial-gradient(#333 1px, transparent 1px);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+    }
+
+    /* --- ELEMENTOS FLOTANTES (ICONOS DE CÓDIGO Y BEBÉ) --- */
+    .floating-icon {
+      position: fixed;
+      font-size: 1.2rem;
+      pointer-events: none;
+      z-index: 1;
+      animation: floatAround 15s linear infinite;
+      opacity: 0.4;
+      color: #ffd700; /* Amarillo Python */
+    }
+
+    @keyframes floatAround {
+      0% { transform: translate(0, 110vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.5; }
+      90% { opacity: 0.5; }
+      100% { transform: translate(20px, -10vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* --- TARJETA PRINCIPAL (ESTILO TERMINAL) --- */
+    .card {
+      background: #2d2d2d;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      border: 2px solid #444;
+      z-index: 10;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Barra superior de la terminal */
+    .terminal-header {
+      background: #3c3c3c;
+      padding: 10px 15px;
+      display: flex;
+      gap: 8px;
+      border-bottom: 2px solid #444;
+    }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+
+    .card-body {
+      padding: 30px 25px;
+      text-align: center;
+    }
+
+    .main-emoji {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      display: inline-block;
+      animation: heartBeat 1.5s infinite;
+    }
+
+    h1 {
+      color: #4da6ff; /* Azul Python */
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    p {
+      color: #ccc;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    /* Estilo para código */
+    .code-span {
+      font-family: 'Fira Code', monospace;
+      background: #1e1e1e;
+      color: #ce9178; /* Color string VS Code */
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      background: #27c93f; /* Verde success */
+      color: #1e1e1e;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 15px 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(39, 201, 63, 0.3);
+      transition: all 0.3s ease;
+      width: 100%;
+      max-width: 380px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .btn:hover {
+      background: #32e04f;
+      transform: translateY(-2px);
+    }
+
+    /* Contenido oculto (el saludo real) */
+    .secret-content {
+      display: none;
+      margin-top: 25px;
+      animation: slideInUp 0.8s ease-out forwards;
+      text-align: left;
+      border-top: 1px solid #444;
+      padding-top: 20px;
+    }
+
+    .code-block {
+      font-family: 'Fira Code', monospace;
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      text-align: left;
+      overflow-x: auto;
+      margin-bottom: 15px;
+      border: 1px solid #333;
+    }
+
+    .keyword { color: #569cd6; } /* def, class */
+    .function { color: #dcdcaa; } /* name */
+    .string { color: #ce9178; } /* strings */
+    .comment { color: #6a9955; } /* comments */
+
+    @keyframes heartBeat {
+      0% { transform: scale(1); }
+      14% { transform: scale(1.1); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.1); }
+      70% { transform: scale(1); }
+    }
+
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="floating-container"></div>
+
+  <div class="card">
+    <div class="terminal-header">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+    </div>
+    
+    <div class="card-body">
+      <div class="main-emoji">👶🍼🐍</div>
+      <h1>¡Despliegue Exitoso, Susana!</h1>
+      <p>
+        🚨 <span class="code-span">SYSTEM_ALERT:</span> Se ha detectado un nuevo integrante en el entorno de producción.
+        <br><br>
+        Después de 9 meses de compilación (¡backend!), el frontend ha sido un éxito total. ¡Release v1.0 listo!
+      </p>
+      
+      <button id="action-btn" class="btn" onclick="celebrar()">
+        > Confirmar Output 💻❤️
+      </button>
+
+      <div id="secret-content" class="secret-content">
+        
+        <div class="code-block">
+<span class="keyword">class</span> <span class="function">BebeSusana</span>:
+    <span class="keyword">defNo se ve la terminal , o el código de la tarjeta, qué paso?

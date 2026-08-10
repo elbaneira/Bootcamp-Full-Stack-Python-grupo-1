@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas con Animación Deslizante y Persistencia</title>
+    <!-- 1. Estilos de Bootstrap 4 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- 2. Estilos de jQuery UI para el Datepicker -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body class="bg-light">
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h3 class="mb-0">Mi Lista de Tareas Deslizante</h3>
+                    </div>
+                    <div class="card-body">
+                        
+                        <!-- Formulario para ingresar tareas y fecha límite -->
+                        <form id="form-tarea" class="mb-4">
+                            <div class="form-row">
+                                <div class="col-md-7 mb-2">
+                                    <input type="text" id="input-tarea" class="form-control" placeholder="¿Qué tienes pendiente?" required autocomplete="off">
+                                </div>
+                                <div class="col-md-3 mb-2">
+                                    <input type="text" id="fecha-tarea" class="form-control" placeholder="Fecha límite" autocomplete="off" readonly style="background-color: #fff; cursor: pointer;">
+                                </div>
+                                <div class="col-md-2 mb-2">
+                                    <button class="btn btn-primary btn-block" type="submit">Agregar</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Contenedor del árbol DOM para renderizar las tareas -->
+                        <ul id="lista-tareas" class="list-group">
+                            <!-- Los nodos li se inyectarán aquí dinámicamente -->
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- === ORDEN DE INCLUSIÓN DE SCRIPTS === -->
+    <!-- 1. Biblioteca base de jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- 2. Biblioteca base de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 3. Plugin Datepicker (jQuery UI) -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            
+            // Inicializar el plugin Datepicker
+            $('#fecha-tarea').datepicker({
+                dateFormat: 'dd/mm/yy',
+                minDate: 0,
+                dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+            });
+
+            // Cargar tareas guardadas al iniciar la aplicación
+            cargarTareas();
+
+            // A. Capturar el evento 'submit' al ingresar una tarea
+            $('#form-tarea').on('submit', function(evento) {
+                evento.preventDefault(); 
+
+                let textoTarea = $('#input-tarea').val().trim();
+                let fechaTarea = $('#fecha-tarea').val();
+
+                if (textoTarea !== "") {
+                    // Agregar elemento al DOM usando la nueva transición de deslizamiento
+                    agregarTareaDOM(textoTarea, fechaTarea, false, true);
+                    
+                    // Guardar lista actualizada en el localStorage
+                    guardarTareas();
+
+                    // Limpiar los inputs
+                    $('#input-tarea').val('');
+                    $('#fecha-tarea').val('');
+                }
+            });
+
+            // B. Marcar o desmarcar tarea como completada usando estilos CSS
+            $('#lista-tareas').on('click', '.texto-clicable', function() {
+                let elemento = $(this);
+                
+                if (elemento.css('text-decoration-line') === 'line-through') {
+                    elemento.css({
+                        'text-decoration': 'none',
+                        'color': '#212529'
+                    });
+                } else {
+                    elemento.css({
+                        'text-decoration': 'line-through',
+                        'color': '#6c757d'
+                    });
+                }
+                
+                guardarTareas();
+            });
+
+            // C. Eliminar tarea con transición slideUp y función de Callback
+            $('#lista-tareas').on('click', '.btn-eliminar', function() {
+                let itemTarea = $(this).parent();
+
+                // slideUp desliza la tarea hacia arriba antes de borrarla físicamente del DOM [1].
+                // El Callback garantiza que la remoción y la actualización de persistencia ocurran 
+                // estrictamente cuando la animación visual ha concluido por completo [1, 2].
+                itemTarea.slideUp('slow', function() {
+                    $(this).remove(); 
+                    guardarTareas();  
+                });
+            });
+
+            // --- FUNCIONES DE SOPORTE ---
+
+            // Renderizar un nodo li estructurado en el DOM
+            function agregarTareaDOM(texto, fecha, completada, conAnimacion = false) {
+                let estiloTexto = completada 
+                    ? 'style="cursor: pointer; flex-grow: 1; text-decoration: line-through; color: #6c757d;"' 
+                    : 'style="cursor: pointer; flex-grow: 1;"';
+                
+                // Ocultamos inicialmente el li para que slideDown pueda actuar sobre él [1, 3]
+                let estiloLi = conAnimacion ? 'style="display: none;"' : '';
+
+                let badgeFecha = fecha 
+                    ? `<span class="badge badge-info mr-3 p-2">📅 Límite: ${fecha}</span>` 
+                    : '';
+
+                let nuevaTarea = $(`
+                    <li class="list-group-item d-flex justify-content-between align-items-center" ${estiloLi}>
+                        <div class="texto-clicable d-flex flex-wrap align-items-center" ${estiloTexto}>
+                            <span class="mr-3">${texto}</span>
+                            ${badgeFecha}
+                        </div>
+                        <button class="btn btn-danger btn-sm btn-eliminar">Eliminar</button>
+                    </li>
+                `);
+
+                $('#lista-tareas').append(nuevaTarea);
+
+                if (conAnimacion) {
+                    // Hace aparecer la tarea deslizándola suavemente hacia abajo [1]
+                    nuevaTarea.slideDown('slow'); 
+                }
+            }
+
+            // Serializar el estado de los elementos del DOM y guardarlo en el localStorage
+            function guardarTareas() {
+                let listaDeTareas = [];
+
+                $('#lista-tareas li').each(function() {
+                    let texto = $(this).find('.texto-clicable span').first().text();
+                    let completada = $(this).find('.texto-clicable').css('text-decoration-line') === 'line-through';
+                    
+                    let badgeTexto = $(this).find('.badge').text();
+                    let fecha = badgeTexto ? badgeTexto.replace('📅 Límite: ', '') : '';
+                    
+                    listaDeTareas.push({
+                        texto: texto,
+                        fecha: fecha,
+                        completada: completada
+                    });
+                });
+
+                localStorage.setItem('tareasLocalSlideUI', JSON.stringify(listaDeTareas));
+            }
+
+            // Cargar tareas guardadas desde el almacenamiento local al iniciar
+            function cargarTareas() {
+                let datosGuardados = localStorage.getItem('tareasLocalSlideUI');
+                if (datosGuardados) {
+                    let tareas = JSON.parse(datosGuardados);
+                    tareas.forEach(function(tarea) {
+                        agregarTareaDOM(tarea.texto, tarea.fecha, tarea.completada, false);
+                    });
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
