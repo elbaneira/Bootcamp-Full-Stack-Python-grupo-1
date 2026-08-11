@@ -1,6 +1,0 @@
-print("=== LEER EL ARCHIVO COMPLETO .read() ===")
-archivo = open("prueba.txt", "r", encoding="utf-8")
-contenido = archivo.read()
-print(contenido)
-archivo.close()
-print()
