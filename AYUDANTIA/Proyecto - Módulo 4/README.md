@@ -17,6 +17,17 @@ Sistema de gestión de clientes desarrollado en **Python** aplicando los princip
 
 ---
 
+## 📽️ Presentación en Video
+
+* **Duración:** ~3 minutos aprox.
+* **Contenido:** Explicación del diagrama UML, pilares de POO (Encapsulamiento, Herencia, Polimorfismo, Composición), ejecución del CRUD y exportación a JSON/CSV.
+
+[![Ver Video en YouTube](https://img.youtube.com/vi/iDbT40OkKc4/maxresdefault.jpg)](https://youtu.be/iDbT40OkKc4)
+
+👉 **[Haz clic aquí si la imagen no abre el video](https://youtu.be/iDbT40OkKc4)**
+
+---
+
 ## 🛠️ Tecnologías Utilizadas
 
 - **Lenguaje:** Python 3.x
