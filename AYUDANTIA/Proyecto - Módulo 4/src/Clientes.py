@@ -21,19 +21,19 @@ class Cliente:
         self.__direccion = direccion
 
     # Métodos Getters
-    def get_Identificador(self):
+    def getIdentificador(self):
         return self.__identificador
 
-    def get_Nombre(self):
+    def getNombre(self):
         return self.__nombre
 
-    def get_Email(self):
+    def getEmail(self):
         return self.__email
 
-    def get_Telefono(self):
+    def getTelefono(self):
         return self.__telefono
 
-    def get_Direccion(self):
+    def getDireccion(self):
         return self.__direccion
 
     #  Método especial __eq__ (Compara dos clientes por su Identificador)
@@ -54,7 +54,7 @@ class ClienteRegular(Cliente):
         super().__init__(identificador, nombre, email, telefono, direccion)
         self.__puntos_acumulados = puntos_acumulados
 
-    def get_Puntos_Acumulados(self):
+    def getPuntos_Acumulados(self):
         return self.__puntos_acumulados
 
     def obtener_datos(self):
@@ -72,10 +72,10 @@ class ClientePremium(Cliente):
         self.__nivel_membresia = nivel_membresia
         self.__porcentaje_descuento = porcentaje_descuento
 
-    def get_NivelMembresia(self):
+    def getNivelMembresia(self):
         return self.__nivel_membresia
 
-    def get_PorcentajeDescuento(self):
+    def getPorcentajeDescuento(self):
         return self.__porcentaje_descuento
 
     def obtener_datos(self):
@@ -93,10 +93,10 @@ class ClienteCorporativo(Cliente):
         self.__empresa = empresa
         self.__limite_credito = limite_credito
 
-    def get_Empresa(self):
+    def getEmpresa(self):
         return self.__empresa
 
-    def get_LimiteCredito(self):
+    def getLimiteCredito(self):
         return self.__limite_credito
 
     def obtener_datos(self):

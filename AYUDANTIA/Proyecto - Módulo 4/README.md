@@ -13,31 +13,35 @@ La solución permite trabajar con diferentes tipos de clientes mediante una estr
 El sistema incorpora las siguientes funcionalidades y conceptos de programación:
 
 🧩 Programación Orientada a Objetos
-Encapsulamiento: protección y control del acceso a los atributos de las clases.
-Herencia: utilización de una clase base Cliente y clases especializadas para los distintos tipos de clientes.
-Polimorfismo: implementación de comportamientos específicos según el tipo de cliente.
-Métodos especiales: utilización de __str__ y __eq__ para representar y comparar objetos.
+
+Encapsulamiento
+Herencia
+Polimorfismo
+__str__
+__eq__
 
 👥 Gestión de clientes
-Registro de nuevos clientes.
-Consulta de información.
-Modificación y eliminación de registros.
-Gestión diferenciada de clientes según su tipo.
-Validación de los datos ingresados.
 
-💾 Persistencia de datos
-Almacenamiento de información mediante archivos JSON.
-Exportación de información a formato CSV.
-Recuperación de los datos almacenados al ejecutar nuevamente el sistema.
+Crear
+Buscar
+Editar
+Eliminar
 
-⚙️ Manejo de errores
+💾 Gestión de datos
+
+Persistencia en JSON
+Exportación CSV
+
+⚙️ Validaciones y excepciones
+
 Uso de excepciones para controlar situaciones inesperadas.
 Validación de entradas para evitar datos incorrectos.
 Mensajes informativos para orientar al usuario durante la ejecución.
 
 📝 Registro de actividades
-Generación de un archivo de auditoría para registrar las principales acciones realizadas en el sistema.
-Seguimiento de las operaciones efectuadas durante la ejecución.
+
+Generación de un archivo de auditoría (actividad.txt) para mantener un registro de las principales operaciones realizadas en el sistema.
+El sistema permite almacenar la información de los clientes en formato JSON y exportarla a CSV.
 
 ---
 
@@ -52,24 +56,57 @@ Seguimiento de las operaciones efectuadas durante la ejecución.
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## 🛠️ Tecnologías y conceptos utilizados
 
-- **Lenguaje:** Python 3.x
-- **Módulos estándar:** `json`, `csv`, `datetime`
-- **Paradigma:** Programación Orientada a Objetos (POO)
+### Lenguaje
+
+* 🐍 **Python**
+
+### Programación
+
+* Programación Orientada a Objetos (POO)
+* Encapsulamiento
+* Herencia
+* Polimorfismo
+* Métodos especiales `__str__` y `__eq__`
+* Validación de atributos
+* Manejo de excepciones
+
+### Gestión y almacenamiento de datos
+
+* **JSON** para almacenar la información de los clientes.
+* **CSV** para exportar los datos en formato tabular.
+* Archivo de texto para el registro de actividades.
+
+### Control de versiones
+
+* **Git / GitHub** para gestionar y documentar el proyecto.
 
 ---
 
-## 📁 Estructura del Repositorio
+## ## 📁 Estructura del proyecto
 
-```text
-├── clientes.py          # Definición de la superclase Cliente y sus subclases.
-├── gestor_cliente.py    # Lógica de administración (CRUD), lectura/escritura de archivos y logs.
-├── main.py              # Script principal de ejecución y demostración.
-├── actividad.txt        # Archivo generado automáticamente con los logs del sistema.
-├── clientes.json        # Archivo de exportación/importación en formato JSON.
-├── clientes.csv         # Archivo de exportación en formato CSV.
-└── README.md            # Documentación del proyecto.
+Proyecto - Módulo 4/
+│
+├── docsGIC/              # Documentación complementaria del proyecto
+├── img/                  # Recursos gráficos y material visual
+│
+├── src/                  # Código fuente de la aplicación
+│   ├── Clientes.py       # Clases y modelos de clientes
+│   ├── gestor_Clientes.py# Gestión de clientes y operaciones CRUD
+│   └── main.py           # Ejecución y demostración del sistema
+│
+├── .gitignore            # Archivos excluidos del control de versiones
+└── README.md             # Documentación principal del proyecto
+
+
+### Componentes principales
+
+* **`Clientes.py`**: contiene la clase base `Cliente` y sus clases especializadas, aplicando encapsulamiento, herencia y polimorfismo.
+* **`gestor_Clientes.py`**: concentra la gestión de clientes, incluyendo las operaciones CRUD, validaciones, almacenamiento en JSON, exportación a CSV y registro de actividades.
+* **`main.py`**: punto de entrada utilizado para crear clientes y demostrar las principales funcionalidades del sistema.
+* **`docsGIC/`**: contiene documentación complementaria asociada al proyecto.
+* **`img/`**: contiene recursos gráficos utilizados para la presentación y documentación.
 
 ---
 
