@@ -84,20 +84,22 @@ El sistema permite almacenar la información de los clientes en formato JSON y e
 
 ---
 
-## ## 📁 Estructura del proyecto
+## 📁 Estructura del proyecto
 
+```text
 Proyecto - Módulo 4/
 │
-├── docsGIC/              # Documentación complementaria del proyecto
-├── img/                  # Recursos gráficos y material visual
+├── docsGIC/                # Documentación complementaria del proyecto
+├── img/                    # Recursos gráficos y material visual
 │
-├── src/                  # Código fuente de la aplicación
-│   ├── Clientes.py       # Clases y modelos de clientes
-│   ├── gestor_Clientes.py# Gestión de clientes y operaciones CRUD
-│   └── main.py           # Ejecución y demostración del sistema
+├── src/                    # Código fuente de la aplicación
+│   ├── Clientes.py         # Clases y modelos de clientes
+│   ├── gestor_Clientes.py  # Gestión de clientes y operaciones CRUD
+│   └── main.py             # Ejecución y demostración del sistema
 │
-├── .gitignore            # Archivos excluidos del control de versiones
-└── README.md             # Documentación principal del proyecto
+├── .gitignore              # Archivos excluidos del control de versiones
+└── README.md               # Documentación principal del proyecto
+```
 
 
 ### Componentes principales
