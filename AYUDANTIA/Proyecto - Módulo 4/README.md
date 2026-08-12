@@ -1,19 +1,43 @@
 # 🚀 Gestor Inteligente de Clientes (GIC)
 
-Sistema de gestión de clientes desarrollado en **Python** aplicando los principios fundamental de la **Programación Orientada a Objetos (POO)**, manejo de excepciones y persistencia de datos en archivos estructurados (**JSON** y **CSV**).
+ Sistema de gestión de clientes desarrollado en Python para registrar, consultar, eliminar y administrar información de distintos tipos de clientes.
+
+El proyecto fue desarrollado aplicando los principios fundamentales de la Programación Orientada a Objetos (POO), manejo de excepciones y persistencia de datos mediante archivos JSON y CSV.
+
+La solución permite trabajar con diferentes tipos de clientes mediante una estructura basada en una clase principal y clases especializadas, incorporando validaciones, operaciones CRUD, exportación de información y registro de actividades.
 
 ---
 
-## 📌 Características del Proyecto
+📌 Características del proyecto
 
-- **Modelo de Clientes con POO:**
-  - **Superclase (`Cliente`):** Define los atributos base y encapsula la información mediante atributos privados.
-  - **Subclases:** `ClienteRegular`, `ClientePremium` y `ClienteCorporativo`, implementando **Herencia** y **Polimorfismo**.
-  - **Métodos dunder:** Uso de `__str__` para representación en formato texto y `__eq__` para comparación de instancias por identificador.
-- **Validaciones Avanzadas:** Control estricto de datos de entrada que lanza excepciones `ValueError` si hay campos vacíos o formatos de correo inválidos.
-- **Gestión CRUD:** Creación, búsqueda y eliminación de clientes asegurando que no existan identificadores duplicados.
-- **Persistencia de Datos:** Exportación e importación masiva de clientes en formatos **JSON** y **CSV**.
-- **Registro de Auditoría (Logs):** Guarda automáticamente un historial de las acciones realizadas con fecha y hora en `actividad.txt`.
+El sistema incorpora las siguientes funcionalidades y conceptos de programación:
+
+🧩 Programación Orientada a Objetos
+Encapsulamiento: protección y control del acceso a los atributos de las clases.
+Herencia: utilización de una clase base Cliente y clases especializadas para los distintos tipos de clientes.
+Polimorfismo: implementación de comportamientos específicos según el tipo de cliente.
+Métodos especiales: utilización de __str__ y __eq__ para representar y comparar objetos.
+
+👥 Gestión de clientes
+Registro de nuevos clientes.
+Consulta de información.
+Modificación y eliminación de registros.
+Gestión diferenciada de clientes según su tipo.
+Validación de los datos ingresados.
+
+💾 Persistencia de datos
+Almacenamiento de información mediante archivos JSON.
+Exportación de información a formato CSV.
+Recuperación de los datos almacenados al ejecutar nuevamente el sistema.
+
+⚙️ Manejo de errores
+Uso de excepciones para controlar situaciones inesperadas.
+Validación de entradas para evitar datos incorrectos.
+Mensajes informativos para orientar al usuario durante la ejecución.
+
+📝 Registro de actividades
+Generación de un archivo de auditoría para registrar las principales acciones realizadas en el sistema.
+Seguimiento de las operaciones efectuadas durante la ejecución.
 
 ---
 
@@ -46,3 +70,8 @@ Sistema de gestión de clientes desarrollado en **Python** aplicando los princip
 ├── clientes.json        # Archivo de exportación/importación en formato JSON.
 ├── clientes.csv         # Archivo de exportación en formato CSV.
 └── README.md            # Documentación del proyecto.
+
+---
+
+**Autor:** Elba Neira Arévalo  
+**Curso / Módulo:** Desarrollo de Aplicaciones Full Stack Python (Grupo 1) 

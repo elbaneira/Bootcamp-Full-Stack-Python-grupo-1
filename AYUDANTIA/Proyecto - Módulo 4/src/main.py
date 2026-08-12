@@ -6,6 +6,7 @@ def ejecutar_demostración():
 
     print("--- 1. Creando Clientes ---")
     try:
+        
         # Instanciación de tipos de clientes
         c1 = Clientes.ClienteRegular("C001", "Elon Musk", "elon@email.com", "987654321", "Av. Central 123", 150)
         c2 = Clientes.ClientePremium("C002", "Jensen Huang", "jensen@email.com", "912345678", "Calle Alta 456", "Oro", 15)

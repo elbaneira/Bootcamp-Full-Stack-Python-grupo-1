@@ -44,6 +44,7 @@ class GestorClientes:
 
         self.registrar_log(f"Editado cliente ID {identificador}")
         print(f"✅ Cliente {identificador} actualizado con éxito.")
+        
 
     # Persistencia en JSON y CSV
     def guardar_json(self, ruta="clientes.json"):

@@ -1,6 +1,7 @@
 # Clase padre (Superclase)
-class Cliente():
+class Cliente:
     def __init__(self, identificador, nombre, email, telefono, direccion):
+        # 1. Validaciones preventivas
         if identificador == "":
             raise ValueError("El identificador es obligatorio")
         if nombre == "":
@@ -12,12 +13,14 @@ class Cliente():
         if direccion == "":
             raise ValueError("La dirección es obligatoria")
 
+        # 2. Encapsulamiento: Atributos Privados
         self.__identificador = identificador
         self.__nombre = nombre
         self.__email = email
         self.__telefono = telefono
         self.__direccion = direccion
 
+    # 🔹 Métodos Getters
     def getIdentificador(self):
         return self.__identificador
 
@@ -33,9 +36,15 @@ class Cliente():
     def getDireccion(self):
         return self.__direccion
 
+    # 🔹 Método especial __eq__ (Compara dos clientes por su Identificador)
+    def __eq__(self, other):
+        if not isinstance(other, Cliente):
+            return False
+        return self.__identificador == other.getIdentificador()
+
+    # 🔹 Mostrar información
     def obtener_datos(self):
         return f"ID: {self.__identificador} | Nombre: {self.__nombre} | Email: {self.__email} | Teléfono: {self.__telefono} | Dirección: {self.__direccion}"
-
 
 # Clase hija (subclase)
 class ClienteRegular(Cliente):
