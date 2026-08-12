@@ -116,3 +116,5 @@
 [2026-08-11 22:06:08] Guardado en JSON
 [2026-08-11 22:06:08] Guardado en CSV
 [2026-08-11 22:06:08] Editado cliente ID C001
+[2026-08-11 22:15:24] Guardado en JSON
+[2026-08-11 22:15:24] Guardado en CSV
