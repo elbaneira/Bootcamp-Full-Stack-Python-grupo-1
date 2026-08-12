@@ -20,7 +20,7 @@ class Cliente:
         self.__telefono = telefono
         self.__direccion = direccion
 
-    # 🔹 Métodos Getters
+    # Métodos Getters
     def getIdentificador(self):
         return self.__identificador
 
@@ -36,13 +36,13 @@ class Cliente:
     def getDireccion(self):
         return self.__direccion
 
-    # 🔹 Método especial __eq__ (Compara dos clientes por su Identificador)
+    #  Método especial __eq__ (Compara dos clientes por su Identificador)
     def __eq__(self, other):
         if not isinstance(other, Cliente):
             return False
         return self.__identificador == other.getIdentificador()
 
-    # 🔹 Mostrar información
+    # Mostrar información
     def obtener_datos(self):
         return f"ID: {self.__identificador} | Nombre: {self.__nombre} | Email: {self.__email} | Teléfono: {self.__telefono} | Dirección: {self.__direccion}"
 
