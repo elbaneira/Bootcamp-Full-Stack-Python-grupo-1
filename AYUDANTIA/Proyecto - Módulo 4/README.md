@@ -108,10 +108,11 @@ Proyecto - Módulo 4/
 ```
 
 
-### Componentes principales
+## Componentes principales
 
 * **`Clientes.py`**: contiene la clase base `Cliente` y sus clases especializadas, aplicando encapsulamiento, herencia y polimorfismo.
-* **`gestor_Clientes.py`**: concentra la gestión de clientes, incluyendo las operaciones CRUD, validaciones, almacenamiento en JSON, exportación a CSV y registro de actividades.
+* **`gestor_Clientes.py`**: concentra la gestión de clientes, incluyendo las operaciones CRUD, validaciones,JSON → almacenamiento, CSV → exportación, actividad.txt → registro de actividades
+almacenamiento en JSON, exportación a CSV y registro de actividades.
 * **`main.py`**: punto de entrada utilizado para crear clientes y demostrar las principales funcionalidades del sistema.
 * **`docsGIC/`**: contiene documentación complementaria asociada al proyecto.
 * **`img/`**: contiene recursos gráficos utilizados para la presentación y documentación.
