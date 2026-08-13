@@ -4,6 +4,7 @@
 
 **Autora:** Elba Neira Arévalo  
 **Formación:** Bootcamp Full Stack Python
+---
 
  Sistema de gestión de clientes desarrollado en Python para registrar, consultar, eliminar y administrar información de distintos tipos de clientes.
 
