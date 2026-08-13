@@ -1,5 +1,10 @@
 # 🚀 Gestor Inteligente de Clientes (GIC)
 
+### Proyecto Módulo 4 — Programación Orientada a Objetos en Python
+
+**Autora:** Elba Neira Arévalo  
+**Formación:** Bootcamp Full Stack Python
+
  Sistema de gestión de clientes desarrollado en Python para registrar, consultar, eliminar y administrar información de distintos tipos de clientes.
 
 El proyecto fue desarrollado aplicando los principios fundamentales de la Programación Orientada a Objetos (POO), manejo de excepciones y persistencia de datos mediante archivos JSON y CSV.
@@ -112,5 +117,9 @@ Proyecto - Módulo 4/
 
 ---
 
-**Autor:** Elba Neira Arévalo  
-**Curso / Módulo:** Desarrollo de Aplicaciones Full Stack Python (Grupo 1) 
+### Control de versiones
+
+* **Git / GitHub** para gestionar y documentar el proyecto.
+
+---
+© 2026 Elba Neira Arévalo
